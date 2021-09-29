@@ -1,10 +1,24 @@
 const express = require('express')
-const contactDal = require('./DAL/contact')
+    // const contactDal = require('./DAL/contacts')
+    // const documentDal = require('./DAL/documents')
+
+const studentDal = require('./DAL/students')
 const app = express()
 
 
-app.get('/', async(req, res) => {
-    let ret = await contactDal.load("chave")
+app.get('/contact', async(req, res) => {
+    let ret = await contactDal.load(1)
+    res.send(ret)
+})
+
+app.get('/document', async(req, res) => {
+    let ret = await documentDal.load(1)
+    res.send(ret)
+})
+
+//Nova rota
+app.get('/create-contact', async(req, res) => {
+    let ret = await contactDal.create(1, 3, 'instagram', 'alexsilva7')
     res.send(ret)
 })
 
