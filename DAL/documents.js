@@ -3,8 +3,8 @@ const documentModel = require('../domain/document')
 
 module.exports = class document {
     static async load(studentId) {
-        let documents = await db.query("SELECT document_id, document_type, document_value FROM StudentDocuments where student_id = $1", [studentId])
-        let ret = []
+        var documents = await db.query("SELECT document_id, document_type, document_value FROM StudentDocuments where student_id = $1", [studentId])
+        var ret = []
         documents.rows.forEach(element => {
             let item = new documentModel(element.student_id, element.document_id, element.document_type, element.document_value)
             ret.push(item)
