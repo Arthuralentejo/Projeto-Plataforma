@@ -5,6 +5,8 @@ const documentDal = require('./DAL/documents')
 const studentDal = require('./DAL/students')
 const app = express()
 
+const dbconnection = require('./DAL/dbConnection')
+
 //configurando a ejs
 app.set('view engine','ejs')
 
@@ -19,6 +21,25 @@ app.use(express.urlencoded({extended:true}))
 
 app.get('/', async(req, res) => {
     res.render("home/index")
+})
+
+app.post('/admin', async(req, res) => {
+    let {login, senha} = req.body
+    let pass = await dbconnection.query('SELECT pass FROM admins WHERE login = $1', [login])
+    let password
+
+    if(pass.rows.length == 0){
+        password = ''
+    }
+    else{
+        password = pass.rows[0].pass
+    }
+    
+    if(senha == password){
+        res.redirect('/admin')
+    }else{
+        res.redirect('/')
+    }
 })
 
 app.get('/contact', async(req, res) => {

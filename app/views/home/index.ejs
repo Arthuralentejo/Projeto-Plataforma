@@ -25,12 +25,20 @@
                         </div>
                         
 
-                        <form class="margin-t mt-4">
+                        <form action="/admin" class="margin-t mt-4" method="POST">
                             <div class="form-group mb-4 d-flex justify-content-center rounded">
-                                <input type="text" class="form-control border-secondary" placeholder="login" required="">
+
+                                <input type="text" id="login" name= "login" 
+                                class="form-control border-secondary" 
+                                placeholder="login" required="">
+
                             </div>
                             <div class="form-group d-flex justify-content-center rounded">
-                                <input type="password" class="form-control d-flex border-secondary" placeholder="*****" required="">
+
+                                <input type="password" id="senha" name= "senha" 
+                                class="form-control d-flex border-secondary" 
+                                placeholder="*****" required="">
+                            
                             </div>
                             <!--
                             <button type="submit" class="form-button button-l margin-b">Entrar</button>
@@ -39,9 +47,13 @@
                             <br>
                             <a class="text-darkyellow" href="#"><small>Registrar</small></a>
                             -->
+                            <button type="submit" 
+                            id = "icone" 
+                            class="oi oi-account-login text-warning margin-t btn pt-3 mb-4">
+                            </button>
+
                         </form>
-                        
-                        <span id = "icone" class="oi oi-account-login text-warning margin-t btn pt-3 mb-4"></span>
+                    
                         <!--
                         <p class="margin-t text-whitesmoke"><small> Plataforma Impact &copy; 2021</small> </p>
                             -->
